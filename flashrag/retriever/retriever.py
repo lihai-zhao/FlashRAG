@@ -604,7 +604,7 @@ class MultiRetrieverRouter:
         # for naive search, result is a list of dict, each repr a doc
         # for batch search, result is a list of list, each repr a doc list(per query)
         for item in result:
-            if isinstance(item, list):
+            if isinstance(item, list) or isinstance(item,np.ndarray):
                 for _item in item:
                     _item["source"] = retrieval_method
                     _item["corpus_path"] = corpus_path

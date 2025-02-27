@@ -304,7 +304,8 @@ class BM25Retriever(BaseTextRetriever):
             scores = list(scores[0])
         else:
             assert False, "Invalid bm25 backend!"
-
+        results = results.tolist() if isinstance(results,np.ndarray) else results
+        scores = scores.tolist() if isinstance(scores,np.ndarray) else scores
         if return_score:
             return results, scores
         else:
